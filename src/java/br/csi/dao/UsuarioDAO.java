@@ -19,12 +19,32 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
 
+    public int create(String nome, String senha, String email) {
+        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+            PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            pre.setString(1, email);
+            pre.setString(2, nome);
+            pre.setString(3, senha);
+            pre.executeQuery();
+            ResultSet result = pre.getGeneratedKeys();
+            result.next();
+            if (result.getInt("id") > 0) {
+                return result.getInt("id");
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            
+        }
+        return 0;
+    }
+
     public boolean create(Usuario usuario) {
 
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)");
-            pre.setString(1, usuario.getNome());
-            pre.setString(2, usuario.getSenha());
+            pre.setString(1, usuario.getEmail());
+            pre.setString(2, usuario.getNome());
             pre.setString(3, usuario.getSenha());
 
             if (pre.executeUpdate() > 0) {
