@@ -10,12 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
- *
+ * 
  * @author Enrico
  */
 public class FuncionarioDAO {
     
-    /**
+    
+    
+    /*
      * Não está funcionando, está retornando nullPointerException
      * 
      * 
