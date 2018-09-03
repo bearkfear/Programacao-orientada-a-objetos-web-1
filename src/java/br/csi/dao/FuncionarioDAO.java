@@ -32,7 +32,10 @@ CREATE TABLE funcionario(
     PRIMARY KEY (ID)
 )
  */
+
+
 public class FuncionarioDAO {
+    
 
     /**
      * Metodo responsável por armazenar e criar uma ocorrencia de entidade no
@@ -97,14 +100,13 @@ public class FuncionarioDAO {
 
     /**
      * Faz atualização no banco de dados nas entidades funcionario e usuario
-     * 
-     * Caso tenha feito o update com sucesso retorna TRUE
-     * caso tenha feito o update sem exito retorna FALSE
-     * 
+     *
+     * Caso tenha feito o update com sucesso retorna TRUE caso tenha feito o
+     * update sem exito retorna FALSE
+     *
      * @param funcionario
-     * @return 
+     * @return
      */
-    
     public boolean update(Funcionario funcionario) {
 
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
@@ -130,11 +132,11 @@ public class FuncionarioDAO {
             if (new UsuarioDAO().update(usuario) == false) {
                 return false;
             }
-            
+
             SQL = "UPDATE funcionario SET salario = ? WHERE id = ?";
             pre.setFloat(1, funcionario.getSalario());
             pre.setInt(2, funcionario.getId());
-            
+
             if (pre.executeUpdate() < 1) {
                 return false;
             } else {
@@ -151,10 +153,9 @@ public class FuncionarioDAO {
      *
      * Deleta o funcionario no banco de dados e o seu respectivo usuario
      * associado por chave estrangeira
-     * 
-     * Caso tenha exito TRUE
-     * caso não tenha exito FALSE
-     * 
+     *
+     * Caso tenha exito TRUE caso não tenha exito FALSE
+     *
      * @param id
      * @return
      */
