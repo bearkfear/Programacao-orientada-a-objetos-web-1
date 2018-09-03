@@ -14,11 +14,21 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- *
+ *Classe ClienteDAO é responsável por conectar-se com o banco de dados
+ * É o CRUD do Cliente
  * @author Enrico
  */
 public class ClienteDAO {
 
+    
+    /**
+     * Consulta todos os usuários no banco de dados
+     * 
+     * Retorna uma lista de objetos
+     * 
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Cliente> getClientes() throws SQLException {
 
         ArrayList<Cliente> clientes = new ArrayList<>();
