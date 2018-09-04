@@ -14,11 +14,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- *
+ * Classe UsuarioDAO Possui o CRUD do usuario
  * @author Enrico
  */
 public class UsuarioDAO {
-
+    
+    
+    /**
+     * Cria um usuario com argumentos de nome, senha e email do usuario
+     * @param nome
+     * @param senha
+     * @param email
+     * @return id gerado
+     */
     public int create(String nome, String senha, String email) {
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -38,9 +46,12 @@ public class UsuarioDAO {
         }
         return 0;
     }
-
+    /**
+     * Cria um usuario no banco de dados a partir de um objeto usuario
+     * @param usuario
+     * @return true se teve exito e false se não teve
+     */
     public boolean create(Usuario usuario) {
-
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)");
             pre.setString(1, usuario.getEmail());
@@ -56,7 +67,11 @@ public class UsuarioDAO {
         }
         return false;
     }
-
+    /**
+     * Resgata do banco de dados um usuario a partir do seu codigo de identificação
+     * @param id
+     * @return objeto Usuario
+     */
     public Usuario read(int id) {
         Usuario u = new Usuario();
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
@@ -78,9 +93,13 @@ public class UsuarioDAO {
         }
         return u;
     }
-
+    /**
+     * Atualiza dados de um usuario no banco de dados
+     * @param usuario
+     * @return True se exito, False se erro
+     */
     public boolean update(Usuario usuario) {
-
+        
         try (Connection conn = new ConectaDB_Postgress().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("UPDATE usuario set nome = ?, email = ?, senha = ? where id = ?");
             pre.setString(1, usuario.getNome());
@@ -97,7 +116,13 @@ public class UsuarioDAO {
 
         return false;
     }
-
+    
+    
+    /**
+     * Remove um usuario do banco de dados
+     * @param id
+     * @return True se exito, false se erro;
+     */
     public boolean delete(int id) {
 
         // conexão
@@ -117,6 +142,10 @@ public class UsuarioDAO {
         return false;
     }
 
+    /**
+     * Resgata todos os usuarios existentes no banco de dados
+     * @return Lista de Usuarios
+     */
     public ArrayList<Usuario> getUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
