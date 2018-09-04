@@ -7,4 +7,4 @@ Cadeira do professor Alencar Machado lessionando o conteúdo de Java Web orienta
 Arquivos gerados em aula
 
 
-![alt text] (https://github.com/bearkfear/Programa-o-Orientada-a-Objetos-para-WEB-1/blob/master/rotas.JPG "Diagrama de classes")
+![alt text] (rotas.JPG "Diagrama de classes")
