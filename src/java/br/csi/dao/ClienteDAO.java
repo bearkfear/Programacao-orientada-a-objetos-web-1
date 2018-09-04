@@ -28,7 +28,34 @@ public class ClienteDAO {
      * 
      * @return
      * @throws SQLException 
+     * 
+     * 
      */
+    
+    
+    public boolean create(Cliente cliente) {
+        
+        
+        
+        return false;
+    }
+    
+    
+    public Cliente read (int id) {
+        return null;
+    }
+    
+    public boolean update (Cliente cliente) {
+        return false;
+    }
+    
+    public boolean delete (int id) {
+        
+        
+        return false;
+    }
+    
+    
     public ArrayList<Cliente> getClientes() throws SQLException {
 
         ArrayList<Cliente> clientes = new ArrayList<>();
