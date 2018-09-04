@@ -8,6 +8,7 @@ package br.csi.dao;
 
 import br.csi.model.Cliente;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,6 +35,16 @@ public class ClienteDAO {
     
     
     public boolean create(Cliente cliente) {
+        
+        try (Connection conn = new ConectaDB_Postgress().getConexao()){
+            String sql = "INSERT INTO cliente ";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            
+            
+            
+        } catch (Exception e) {
+        }
         
         
         
