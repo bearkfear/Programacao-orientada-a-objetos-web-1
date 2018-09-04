@@ -6,5 +6,5 @@ Curso de graduação em tecnologia de sistemas para internet na Universidade Fed
 Cadeira do professor Alencar Machado lessionando o conteúdo de Java Web orientado a objetos.
 Arquivos gerados em aula
 
-![alt text] (https://github.com/bearkfear/Programa-o-Orientada-a-Objetos-para-WEB-1/blob/master/DiagramaDeClases.png "Diagrama de classes")
+![alt text] (https://github.com/bearkfear/Programa-o-Orientada-a-Objetos-para-WEB-1/blob/master/rotas.JPG "Diagrama de classes")
 
