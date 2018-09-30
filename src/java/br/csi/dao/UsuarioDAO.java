@@ -28,7 +28,7 @@ public class UsuarioDAO {
      * @return id gerado
      */
     public int create(String nome, String senha, String email) {
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             pre.setString(1, email);
             pre.setString(2, nome);
@@ -52,7 +52,7 @@ public class UsuarioDAO {
      * @return true se teve exito e false se não teve
      */
     public boolean create(Usuario usuario) {
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Insert into usuario (email, nome, senha) values (?,?,?)");
             pre.setString(1, usuario.getEmail());
             pre.setString(2, usuario.getNome());
@@ -74,7 +74,7 @@ public class UsuarioDAO {
      */
     public Usuario read(int id) {
         Usuario u = new Usuario();
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
 
             String SQL = "SELECT * from usuario "
                     + "where id = ?";
@@ -100,7 +100,7 @@ public class UsuarioDAO {
      */
     public boolean update(Usuario usuario) {
         
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("UPDATE usuario set nome = ?, email = ?, senha = ? where id = ?");
             pre.setString(1, usuario.getNome());
             pre.setString(2, usuario.getEmail());
@@ -129,7 +129,7 @@ public class UsuarioDAO {
         // SQL
         // PreparedStatement
         // ExecuteUpdate
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             PreparedStatement pre = conn.prepareStatement("Delete from usuario where id = ?");
             pre.setInt(1, id);
             if (pre.executeUpdate() > 0) {
@@ -149,7 +149,7 @@ public class UsuarioDAO {
     public ArrayList<Usuario> getUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM USUARIO");
 

@@ -45,7 +45,7 @@ public class FuncionarioDAO {
         }
 
         // salvar usuario 
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             String SQL = "INSERT INTO funcionario (id_usuario, salario) Values (?,?);  ";
             PreparedStatement pre = conn.prepareStatement(SQL);
             pre.setInt(1, funcionario.getId());
@@ -69,7 +69,7 @@ public class FuncionarioDAO {
      * @return
      */
     public Funcionario read(int id) {
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             String SQL = "SELECT * FROM funcionario, usuario WHERE funcionario.id_usuario = usuario.id AND funcionario.id = ?";
             PreparedStatement pre = conn.prepareStatement(SQL);
             pre.setInt(1, id);
@@ -101,7 +101,7 @@ public class FuncionarioDAO {
      */
     public boolean update(Funcionario funcionario) {
 
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
 
             String SQL = "SELECT id_usuario FROM funcionario WHERE funcionario.id = ?";
             PreparedStatement pre = conn.prepareStatement(SQL);
@@ -153,7 +153,7 @@ public class FuncionarioDAO {
      */
     public boolean delete(int id) {
 
-        try (Connection conn = new ConectaDB_Postgress().getConexao()) {
+        try (Connection conn = new ConnectionFactory().getConexao()) {
             String SQL = "SELECT id_usuario FROM funcionario WHERE funcionario.id = ?";
             PreparedStatement pre = conn.prepareStatement(SQL);
             // consulta do id do usuario

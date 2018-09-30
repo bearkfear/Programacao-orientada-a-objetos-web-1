@@ -10,7 +10,7 @@ import java.sql.SQLException;
  *
  * @author BearkFear
  */
-public class ConectaDB_Postgress {
+public class ConnectionFactory {
 
     // DRIVER
     private static final String DRIVER = "org.postgresql.Driver";
@@ -19,10 +19,10 @@ public class ConectaDB_Postgress {
     private static final String URL = "jdbc:postgresql://localhost:5432/rotas2018";
 
     // USUARIO
-    private static final String USER = "admin";
+    private static final String USER = "postgres";
 
     // SENHA DO USUARIO
-    private static final String PASSWORD = "0000";
+    private static final String PASSWORD = "1234";
 
     /**
      *

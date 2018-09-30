@@ -36,7 +36,7 @@ public class ClienteDAO {
     
     public boolean create(Cliente cliente) {
         
-        try (Connection conn = new ConectaDB_Postgress().getConexao()){
+        try (Connection conn = new ConnectionFactory().getConexao()){
             String sql = "INSERT INTO cliente ";
             PreparedStatement stmt = conn.prepareStatement(sql);
             
@@ -70,7 +70,7 @@ public class ClienteDAO {
     public ArrayList<Cliente> getClientes() throws SQLException {
 
         ArrayList<Cliente> clientes = new ArrayList<>();
-        Connection conn = new ConectaDB_Postgress().getConexao();
+        Connection conn = new ConnectionFactory().getConexao();
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * from Cliente");
         while (rs.next()) {
