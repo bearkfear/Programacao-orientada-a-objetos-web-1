@@ -6,7 +6,6 @@
 package controller;
 
 import br.csi.dao.UsuarioDAO;
-import br.csi.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -24,11 +23,23 @@ import javax.servlet.http.HttpServletResponse;
  Precisa da url
  */
 @WebServlet(urlPatterns = "/buscarUsuarios")
+
+
+
+/**
+ * Classe servlet protocolo http com rescrita de metodo extendendo servlet
+ * 
+ * Imprime todos os usuarios com foreach e também retorna a partir do codigo por get no url
+ */
+
 public class BuscaUsuariosServlet extends HttpServlet {
 
     /**
      * Reescrita do metodo doGet para pegar requisições atraves do get e
      * responder
+     * 
+     * req = pega as requisições
+     * resp = retorna uma resposta a página web
      *
      * @param req
      * @param resp
@@ -40,8 +51,20 @@ public class BuscaUsuariosServlet extends HttpServlet {
 
         // req.getParameter(...); utilizador para pegar parâmetros de get ou post
         // resp.getWritter... Utilizado para escrever na pagina web
+        
+        
+        /*
+        
+        getWriter metodo que permite a escrita na pagina
+        
+        */
         PrintWriter resposta = resp.getWriter();
 
+        
+        
+        /*
+        Estrutura html
+        */
         resposta.println("<html>");
         resposta.println("<head>");
         resposta.println("<title> Todos os usuarios</title>");
@@ -49,13 +72,21 @@ public class BuscaUsuariosServlet extends HttpServlet {
         resposta.println("<body>");
         resposta.println("<ul>");
 
-        for (Usuario usuario : new UsuarioDAO().getUsuarios()) {
+        
+        
+        /*
+         for funcional ou each imprimindo todos os usuarios cadastrados no banco de dados
+         */
+        new UsuarioDAO().getUsuarios().forEach((usuario) -> {
             resposta.println("<br>");
             resposta.println(usuario.getNome());
-
-        }
+        });
         resposta.println("</ul>");
 
+        
+        /*
+        tratamento de erros que podem ocorrer ao pegar o codigo do usuario por get
+        */
         try {
 
             String codigo = req.getParameter("cod");
@@ -63,16 +94,29 @@ public class BuscaUsuariosServlet extends HttpServlet {
             resposta.println("<p>" + new UsuarioDAO().read(Integer.parseInt(codigo)) + "</p>");
 
         } catch (NumberFormatException e) {
+            
+            /*
+            trata caso o codigo não seja um numero "NumberFormatException"
+            */
             resposta.println("Codigo deve ser um numero inteiro");
         } catch (NullPointerException ex) {
+            
+            /*
+            Trata caso não exista nada declarado
+            */
             resposta.println("Nada declarado");
         } catch (Exception exception) {
+            /*
+            Tratamento de forma generica
+            */
             resposta.println("Problema! valor indefinido");
         }
 
         resposta.println("</body>");
         resposta.println("</html>");
-
+        /*
+        FIM DA ESTRUTURA HTML
+        */
     }
 
 }
