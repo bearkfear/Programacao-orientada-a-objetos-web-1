@@ -3,14 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/model/Cliente.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/model/Rota.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/README.md</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/dao/ConectaDB_Postgress.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/model/Funcionario.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/dao/FuncionarioDAO.java</file>
-            <file>file:/C:/Users/Enrico/Documents/NetBeansProjects/rotas_2018/src/java/br/csi/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Enrico/Documents/github/Programa-o-Orientada-a-Objetos-para-WEB-1/src/java/br/csi/model/Cliente.java</file>
         </group>
     </open-files>
 </project-private>
